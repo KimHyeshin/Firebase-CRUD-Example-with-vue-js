@@ -19,7 +19,7 @@
 </template>
 
 <script>
-  import usersData from './UsersData'
+  import firebase from '@/firebase'
     export default {
         name: "Dashboard",
       props: {
@@ -46,7 +46,7 @@
       },
       data: () => {
         return {
-          items: usersData.filter((user) => user.id < 42),
+          items: [],
           fields: [
             {key: 'id'},
             {key: 'name'},
@@ -59,9 +59,22 @@
           totalRows: 0
         }
       },
+      created(){
+        this.fetchFirebaseData();
+      },
       computed: {
       },
       methods: {
+        fetchFirebaseData(){
+          console.log('fetchFirebaseData !!!!');
+          firebase.database().ref('/').once('value')
+            .then((data)=>{
+              console.log(data.val());
+              // this.usersData = data.val().usersData;
+              this.items = data.val().usersData;
+            })
+            .catch((error)=>{console.log(error)})
+        },
         getRowCount (items) {
           return items.length
         },
