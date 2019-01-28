@@ -2,7 +2,9 @@
   <div id="app">
     <img src="./assets/logo.png" style="width: 50px;">
     <h1>{{ msg }}</h1>
-    <router-view></router-view>
+    <div class="container">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
@@ -16,8 +18,11 @@ export default {
   }
 }
 </script>
-
 <style>
+  @import 'assets/css/bootstrap-grid.css';
+  @import 'assets/css/bootstrap.css';
+  @import 'assets/css/bootstrap-vue.css';
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
