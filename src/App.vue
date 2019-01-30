@@ -4,13 +4,18 @@
     <h1>{{ msg }}</h1>
     <div class="container">
       <router-view></router-view>
+      <app-modal></app-modal>
     </div>
   </div>
 </template>
 
 <script>
+  import AppModal from './components/Modals/DefaultModal'
 export default {
   name: 'app',
+  components:{
+    AppModal
+  },
   data () {
     return {
       msg: 'Firebase CRUD Example with Vue.js'

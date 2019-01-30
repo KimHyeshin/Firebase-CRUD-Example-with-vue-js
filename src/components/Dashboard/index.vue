@@ -1,8 +1,9 @@
 <template>
-  <b-row style="margin-bottom:20px">
-    <b-col cols="12" xl="12" style="padding: 15px;">Dashboard</b-col>
-    <b-col cols="12" xl="12">
-      <!--<transition name="slide">-->
+  <div>
+    <b-row style="margin-bottom:20px">
+      <b-col cols="12" xl="12" style="padding: 15px;">Dashboard</b-col>
+      <b-col cols="12" xl="12">
+        <!--<transition name="slide">-->
         <b-card>
           <b-table :hover="hover" :striped="striped" :bordered="bordered" :small="small" :fixed="fixed" responsive="sm" :items="items" :fields="fields" :current-page="currentPage" :per-page="perPage">
             <template slot="options" slot-scope="items">
@@ -13,16 +14,19 @@
             </template>
           </b-table>
           <div>
-            <a href="#" class="btn  btn-outline-primary btn-lg btn-block">Add User</a>
+            <a href="#" class="btn btn-outline-primary btn-lg btn-block" @click="showModal('AddModal')">Add User</a>
           </div>
         </b-card>
-      <!--</transition>-->
-    </b-col>
-  </b-row>
+        <!--</transition>-->
+      </b-col>
+    </b-row>
+  </div>
+
 </template>
 
 <script>
   import firebase from '@/firebase'
+  import {mapMutations} from 'vuex'
     export default {
         name: "Dashboard",
       props: {
@@ -66,10 +70,9 @@
       created(){
         this.fetchFirebaseData();
       },
-      computed: {
-      },
       methods: {
-        fetchFirebaseData(){
+        ...mapMutations([`showModal`]),
+        fetchFirebaseData() {
           console.log('fetchFirebaseData !!!!');
           firebase.database().ref('/').once('value')
             .then((data)=>{
