@@ -26,7 +26,7 @@
 
 <script>
   import firebase from '@/firebase'
-  import {mapMutations} from 'vuex'
+  import { mapState, mapMutations } from 'vuex'
     export default {
         name: "Dashboard",
       props: {
@@ -69,6 +69,16 @@
       },
       created(){
         this.fetchFirebaseData();
+      },
+      computed: {
+        ...mapState({
+          updateData : `update`
+        })
+      },
+      watch: {
+        updateData() {
+          this.fetchFirebaseData();
+        }
       },
       methods: {
         ...mapMutations([`showModal`]),
