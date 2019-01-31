@@ -54,6 +54,7 @@
       data: () => {
         return {
           items: [],
+          keys: [],
           fields: [
             {key: 'userId'},
             {key: 'name'},
@@ -87,8 +88,12 @@
           firebase.database().ref('/').once('value')
             .then((data)=>{
               console.log(data.val());
-              // this.usersData = data.val().usersData;
+              // this.items = data.val().usersData;
               this.items = Object.values(data.val().usersData);
+              this.keys = Object.keys(data.val().usersData);
+
+              console.log(this.items);
+              console.log(this.keys);
             })
             .catch((error)=>{console.log(error)})
         },

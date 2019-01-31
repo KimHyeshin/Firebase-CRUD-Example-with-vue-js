@@ -1,0 +1,89 @@
+{
+  "usersData" : [
+    {
+      "email" : "Agapetus@gmail.com",
+      "name" : "Agapetus Tadeáš",
+      "registered" : "2018/01/21",
+      "role" : "Staff",
+      "userId" : "agapetus"
+    },
+    {
+      "email" : "Avram@gmail.com",
+      "name" : "Avram Tarasios",
+      "registered" : "2018/02/01",
+      "role" : "Staff",
+      "userId" : "avram"
+    },
+    {
+      "email" : "Chetan@gmail.com",
+      "name" : "Chetan Mohamed",
+      "registered" : "2018/02/01",
+      "role" : "Admin",
+      "userId" : "chetan"
+    },
+    {
+      "email" : "Derick@gmail.com",
+      "name" : "Derick Maximinus",
+      "registered" : "2018/03/01",
+      "role" : "Member",
+      "userId" : "derick"
+    },
+    {
+      "email" : "Estavan@gmail.com",
+      "name" : "Estavan Lykos",
+      "registered" : "2018/02/01",
+      "role" : "Staff",
+      "userId" : "estavan"
+    },
+    {
+      "email" : "Friderik@gmail.com",
+      "name" : "Friderik Dávid",
+      "registered" : "2018/01/21",
+      "role" : "Staff",
+      "userId" : "friderik"
+    },
+    {
+      "email" : "John@gmail.com",
+      "name" : "John Doe",
+      "registered" : "2018/01/01",
+      "role" : "Guest",
+      "userId" : "john"
+    },
+    {
+      "email" : "Kwadwo@gmail.com",
+      "name" : "Enéas Kwadwo",
+      "registered" : "2018/03/01",
+      "role" : "Member",
+      "userId" : "kwadwo"
+    },
+    {
+      "email" : "Ed@gmail.com",
+      "name" : "Quintin Ed",
+      "registered" : "2018/02/01",
+      "role" : "Admin",
+      "userId" : "quintin"
+    },
+    {
+      "email" : "Samppa@gmail.com",
+      "name" : "Samppa Nori",
+      "registered" : "2018/01/01",
+      "role" : "Member",
+      "userId" : "samppa"
+    },
+    {
+      "email" : "Yiorgos@gmail.com",
+      "name" : "Yiorgos Avraamu",
+      "registered" : "2018/01/01",
+      "role" : "Member",
+      "userId" : "yiorgos"
+    },
+    {
+      "email" : "hyeshin2530@naver.com",
+      "key" : "hyeshin2530",
+      "name" : "KimHyeshin",
+      "registered" : "2019/01/30",
+      "role" : "Admin",
+      "userId" : "hyeshin2530"
+    }
+  ]
+}

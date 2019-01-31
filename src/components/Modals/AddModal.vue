@@ -86,11 +86,8 @@
         this.item.registered = current.getFullYear() + '/'
           + ('0' + current.getMonth()+1).slice(-2) + '/'
           + ('0' + current.getDate()).slice(-2)
-        this.item.key = this.item.userId;
 
-        firebase.database().ref('usersData').update({
-          [this.item.key] : this.item
-        }).then(() => {
+        firebase.database().ref('usersData').push(this.item).then(() => {
           this.setUpdate();
           this.next();
         }).catch((error) => {
