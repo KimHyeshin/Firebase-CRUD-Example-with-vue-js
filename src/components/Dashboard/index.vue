@@ -8,13 +8,13 @@
           <b-table :hover="hover" :striped="striped" :bordered="bordered" :small="small" :fixed="fixed" responsive="sm" :items="items" :fields="fields" :current-page="currentPage" :per-page="perPage">
             <template slot="options" slot-scope="items">
               <strong>
-                <button type="button" class="btn btn-outline-warning" style="margin-right: 20px;">Modify</button>
-                <button type="button" class="btn btn-outline-danger">Delete</button>
+                <button type="button" class="btn btn-outline-warning" style="margin-right: 20px;" @click="modifyModal(items.item)">Modify</button>
+                <button type="button" class="btn btn-outline-danger" @click="deleteModal(items.item)">Delete</button>
               </strong>
             </template>
           </b-table>
           <div>
-            <a href="#" class="btn btn-outline-primary btn-lg btn-block" @click="showModal('AddModal')">Add User</a>
+            <a href="#" class="btn btn-outline-primary btn-lg btn-block" @click="showModal({componentName:'AddModal'})">Add User</a>
           </div>
         </b-card>
         <!--</transition>-->
@@ -92,14 +92,28 @@
               this.items = Object.values(data.val().usersData);
               this.keys = Object.keys(data.val().usersData);
 
-              console.log(this.items);
-              console.log(this.keys);
+              // key mapping
+              for(let i=0; i<this.items.length;i++){
+                this.items[i].key = this.keys[i];
+              }
             })
             .catch((error)=>{console.log(error)})
         },
         getRowCount (items) {
           return items.length
         },
+        modifyModal(item){
+          console.log('modifyModal ::');
+          console.log(item);
+          item.componentName ='ModifyModal';
+          this.showModal(item);
+        },
+        deleteModal(item){
+          console.log('deleteModal ::');
+          console.log(item);
+          item.componentName ='DeleteModal';
+          this.showModal(item);
+        }
       }
     }
 </script>

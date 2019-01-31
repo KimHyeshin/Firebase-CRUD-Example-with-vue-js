@@ -8,7 +8,8 @@ const store = new Vuex.Store({
     update:'',
 
     modalVisible: false,
-    modalComponent: null
+    modalComponent: null,
+    modalOptions: null
   },
   mutations:{
     setUpdate(state){
@@ -20,9 +21,10 @@ const store = new Vuex.Store({
         + ('0' + current.getMinutes()).slice(-2) + ':'
         + ('0' + current.getSeconds()).slice(-2)
     },
-    showModal(state, componentName){
+    showModal(state, options){
       state.modalVisible = true;
-      state.modalComponent = componentName;
+      state.modalComponent = options.componentName;
+      state.modalOptions = options;
     },
     hideModal(state){
       state.modalVisible = false;
