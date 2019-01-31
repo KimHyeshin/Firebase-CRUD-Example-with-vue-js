@@ -31,5 +31,7 @@
 </script>
 
 <style scoped>
-
+  .modal{
+    background: rgba(0,0,0,0.5);
+  }
 </style>

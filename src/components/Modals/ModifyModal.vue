@@ -105,10 +105,12 @@
 </script>
 
 <style scoped>
+  .modal{
+    background: rgba(0,0,0,0.5);
+  }
   .area_input {
     text-align: left;
   }
-
   label {
     width: 65px;
     text-align: right;
