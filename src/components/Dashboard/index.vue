@@ -6,6 +6,11 @@
         <!--<transition name="slide">-->
         <b-card>
           <b-table :hover="hover" :striped="striped" :bordered="bordered" :small="small" :fixed="fixed" responsive="sm" :items="items" :fields="fields" :current-page="currentPage" :per-page="perPage">
+            <template v-if="isLoading" slot="table-caption">
+              <div class="area_loading">
+                <img src="../../assets/Loading_icon.gif" alt="" width="250px">
+              </div>
+            </template>
             <template slot="options" slot-scope="items">
               <strong>
                 <button type="button" class="btn btn-outline-warning" style="margin-right: 20px;" @click="modifyModal(items.item)">Modify</button>
@@ -65,7 +70,8 @@
           ],
           currentPage: 1,
           perPage: 50,
-          totalRows: 0
+          totalRows: 0,
+          isLoading: true
         }
       },
       created(){
@@ -86,6 +92,7 @@
         ...mapMutations([`showModal`]),
         fetchFirebaseData() {
           console.log('Dashboard fetchFirebaseData !!!!');
+          this.isLoading = true;
           firebase.database().ref('/').once('value')
             .then((data)=>{
               console.log(data.val());
@@ -97,6 +104,8 @@
               for(let i=0; i<this.items.length;i++){
                 this.items[i].key = this.keys[i];
               }
+
+              this.isLoading = false;
             })
             .catch((error)=>{console.log(error)})
         },
@@ -122,5 +131,8 @@
 <style scoped>
   .card-body >>> table > tbody > tr > td {
     line-height: 38px;
+  }
+  .area_loading{
+    text-align: center;
   }
 </style>
