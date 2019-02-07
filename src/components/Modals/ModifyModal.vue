@@ -10,7 +10,7 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
+          <div v-if="!isLoading" class="modal-body">
             <div class="area_input">
               <label for="userId">User ID : </label>
               <input v-model="item.userId" type="text" id="userId"/>
@@ -26,6 +26,11 @@
             <div class="area_input">
               <label for="userId">Email : </label>
               <input v-model="item.email" type="text" id="email"/>
+            </div>
+          </div>
+          <div v-else class="modal-body">
+            <div class="area_loading">
+              <img src="../../assets/Loading_icon.gif" alt="" width="250px">
             </div>
           </div>
           <div class="modal-footer">
@@ -72,7 +77,8 @@
           name: '',
           role: '',
           email: ''
-        }
+        },
+        isLoading: false
       }
     },
     mounted(){
@@ -83,8 +89,11 @@
       ...mapMutations(['hideModal','setUpdate']),
       next(){
         this.active++;
+        this.isLoading = false;
       },
       modify() {
+        const self = this;
+        this.isLoading = true;
          let current = new Date()
         this.item.registered = current.getFullYear() + '/'
           + ('0' + current.getMonth()+1).slice(-2) + '/'
@@ -93,8 +102,10 @@
         firebase.database().ref('usersData').update({
           [this.item.key]:this.item
         }).then(() => {
-          this.setUpdate();
-          this.next();
+          setTimeout(function () {
+            self.setUpdate();
+            self.next();
+          }, 1000);
         }).catch((error) => {
           console.log('%cdata 수정 중 에러가 발생하였습니다.','color:red');
           console.log(error);

@@ -10,12 +10,17 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
+          <div v-if="!isLoading" class="modal-body">
             <p>User ID : {{item.userId}}</p>
             <p>Name : {{item.name}}</p>
             <p>Role : {{item.role}}</p>
             <p>Email : {{item.email}}</p>
             <p>삭제하시겠습니까?</p>
+          </div>
+          <div v-else class="modal-body">
+            <div class="area_loading">
+              <img src="../../assets/Loading_icon.gif" alt="" width="250px">
+            </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-primary" @click="deleteItem">Delete</button>
@@ -61,7 +66,8 @@
           name: '',
           role: '',
           email: ''
-        }
+        },
+        isLoading: false
       }
     },
     mounted(){
@@ -72,11 +78,16 @@
       ...mapMutations(['hideModal','setUpdate']),
       next(){
         this.active++;
+        this.isLoading = false;
       },
       deleteItem() {
+        const self = this;
+        this.isLoading = true;
         firebase.database().ref('usersData/'+this.item.key).remove().then(() => {
-          this.setUpdate();
-          this.next();
+          setTimeout(function () {
+            self.setUpdate();
+            self.next();
+          }, 1000);
         }).catch((error) => {
           console.log('%cdata 삭제 중 에러가 발생하였습니다.','color:red');
           console.log(error);
