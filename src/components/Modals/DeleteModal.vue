@@ -2,7 +2,7 @@
   <div class="_deleteModal">
     <!--delete modal-->
     <div v-if="active == 0" class="modal" style="display: inline-block;">
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">Delete Modal</h5>
@@ -26,7 +26,7 @@
     </div>
     <!--delete feedback modal-->
     <div v-if="active == 1" class="modal" style="display: inline-block;">
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">Delete Complete!</h5>

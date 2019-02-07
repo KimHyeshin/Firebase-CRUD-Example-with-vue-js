@@ -1,7 +1,7 @@
 <template>
   <div class="_addModal">
     <div v-if="active == 0" class="modal" style="display: inline-block;">
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">Add Modal</h5>
@@ -35,7 +35,7 @@
       </div>
     </div>
     <div v-if="active == 1" class="modal" style="display: inline-block;">
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">Add Complete!</h5>
