@@ -93,7 +93,7 @@
         this.isLoading = true;
          let current = new Date()
         this.item.registered = current.getFullYear() + '/'
-          + ('0' + current.getMonth()+1).slice(-2) + '/'
+          + ('0' + (current.getMonth()+1)).slice(-2) + '/'
           + ('0' + current.getDate()).slice(-2)
 
         firebase.database().ref('usersData').push(this.item).then(() => {
