@@ -77,14 +77,15 @@
         })
       },
       watch: {
-        updateData() {
+        updateData(val, oldVal) {
+          console.log('%cupdateData new: %s, old: %s','color: blue', val, oldVal);
           this.fetchFirebaseData();
         }
       },
       methods: {
         ...mapMutations([`showModal`]),
         fetchFirebaseData() {
-          console.log('fetchFirebaseData !!!!');
+          console.log('Dashboard fetchFirebaseData !!!!');
           firebase.database().ref('/').once('value')
             .then((data)=>{
               console.log(data.val());
