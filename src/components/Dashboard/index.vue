@@ -71,10 +71,11 @@
           currentPage: 1,
           perPage: 50,
           totalRows: 0,
-          isLoading: true
+          isLoading: false
         }
       },
       created(){
+        this.isLoading = true;
         this.fetchFirebaseData();
       },
       computed: {
@@ -92,7 +93,6 @@
         ...mapMutations([`showModal`]),
         fetchFirebaseData() {
           console.log('Dashboard fetchFirebaseData !!!!');
-          this.isLoading = true;
           firebase.database().ref('/').once('value')
             .then((data)=>{
               console.log(data.val());
